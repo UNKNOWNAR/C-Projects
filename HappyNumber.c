@@ -2,25 +2,26 @@
 #include <math.h>
 int main()
 {
-    int num;
-    printf("Enter A Number:");
-    scanf("%d",&num);
-    int temp = num;
-    do
+    for(int i=1;i<=10;i++)
     {
-        int temp1 = 0;
-        while(temp!=0)
+        int itr=0,sum=i;
+        while(sum!=1)
         {
-            temp1+= pow(temp%10,2);
-            temp/=10;
+            int temp=sum;
+            sum=0;
+            while(temp!=0)
+            {
+                sum+=pow(temp%10,2);
+                temp/=10;
+            }
+            itr++;
+            if(itr==100)
+            {
+                printf("%d is not a Happy Number\n",i);
+                break;
+            }
         }
-        temp = temp1;
-        if(temp<10)
-            break;
-    }while(temp!=1);
-    if(temp==1)
-        printf("%d is a Happy Number",num);
-    else
-        printf("%d is not a Happy Number",num);
-    return 0;
+        if(sum==1)
+            printf("%d is a Happy Number\n",i);    
+    }
 }
